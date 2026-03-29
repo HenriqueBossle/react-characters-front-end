@@ -1,0 +1,96 @@
+/* Fundo estilo Marvel */
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0b0b0b;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Card do formulário */
+.card {
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 420px;
+    border: 3px solid #ED1D24;
+    box-shadow: 0 0 20px rgba(237,29,36,0.4);
+}
+
+/* Título */
+.card h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ED1D24;
+    font-family: Impact, Arial Black, sans-serif;
+    letter-spacing: 2px;
+}
+
+/* Espaçamento dos campos */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Labels */
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Inputs e textarea */
+.form-group input,
+.form-group textarea {
+    width: 95%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #333;
+    outline: none;
+    transition: 0.3s;
+    background-color: #0b0b0b;
+    color: white;
+}
+
+/* Foco estilo Marvel */
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #ED1D24;
+    box-shadow: 0 0 10px rgba(237,29,36,0.7);
+}
+
+/* Input file */
+.form-group input[type="file"] {
+    border-color: #ED1D24;
+}
+
+/* Botão */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #ED1D24;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+/* Hover botão */
+button:hover {
+    background: #b31318;
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(237,29,36,0.8);
+}
+
+/* Responsivo */
+@media (max-width: 500px) {
+    .card {
+        margin: 20px;
+        padding: 20px;
+    }
+}
