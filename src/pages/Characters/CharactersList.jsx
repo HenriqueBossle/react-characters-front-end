@@ -4,6 +4,7 @@ import CharactersEdit from './CharactersEdit'
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import './CharactersList.css'
+import Navbar from './Navbar';
 
 function CharactersList(){
     const [characters, setCharacters] = useState([])
@@ -31,8 +32,13 @@ function CharactersList(){
     
 
     return(
+         <>
+        
+        <Navbar />
         <div className="container">
-          
+                        
+
+
             <ul>
     {characters.map(character => {
         const imageUrl = character.image_url?.startsWith('http')
@@ -40,6 +46,7 @@ function CharactersList(){
             : `https://res.cloudinary.com/dd7vsxg0m/image/upload/${character.image_url.trim()}`;
 
         return (
+            
             <li key={character.id}>
                 <img src={imageUrl} alt={character.name} width="400"/>
                 <strong>{character.name}</strong>
@@ -55,7 +62,7 @@ function CharactersList(){
         })}
     </ul>
         </div>
-    )
+       </>)
 }
 
 export default CharactersList

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import "./CharactersCreate.css";
+import Navbar from './Navbar';
 
 function CharactersCreate(){
     const [formData, setFormData] = useState({
@@ -45,7 +46,8 @@ function CharactersCreate(){
     }
     return(
         <>
-             <div className="container">
+        <Navbar/>
+        <div className="container">
         <div className="card">
             <h2>Create Character</h2>
 

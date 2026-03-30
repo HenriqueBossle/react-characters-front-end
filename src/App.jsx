@@ -1,14 +1,15 @@
-import { useState, useEffect } from 'react'
-import api from './api/api'
+import { Link } from 'react-router-dom'
 import './App.css'
 
-
 function App() {
-  
-
-return (
-    <>
-    <h1>Bem vindo</h1></>
+  return (
+    <div className="hero">
+        <div className="overlay">
+            <h1>CHARACTERS DATABASE</h1>
+            <p>Adicione e Explore personagens de diversas histórias e universos.</p>
+            <Link className='button' to={"/list"}>VER PERSONAGENS</Link>
+        </div>
+    </div>
   )
 }
 

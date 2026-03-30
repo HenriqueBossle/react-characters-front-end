@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { useParams, useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 function CharactersEdit(){
     const { id } = useParams();
@@ -52,7 +53,6 @@ function CharactersEdit(){
 
     try {
         await axios.post(`http://127.0.0.1:8000/api/characters/${id}`, data, {
-        //          ^^^^ POST aqui                                  ^^^^ ID na URL
             headers: { "Content-Type": "multipart/form-data" }
         });
         alert("Personagem atualizado com sucesso!");
@@ -63,6 +63,9 @@ function CharactersEdit(){
 };
     
     return(
+        <>
+        
+        <Navbar />
     <div className="container">
         <div className="card">
             <h1>EDIT CHARACTER</h1>
@@ -110,6 +113,7 @@ function CharactersEdit(){
             </form>
         </div>
     </div>
+    </>
 )
 }
 
