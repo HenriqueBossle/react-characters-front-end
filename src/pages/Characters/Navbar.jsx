@@ -1,14 +1,45 @@
-import { Link } from "react-router-dom"
-import "./Navbar.css"
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import api from "../../api/api";
+import "./Navbar.css";
 
-function Navbar(){
-    return(
+function Navbar() {
+    const { authenticated, logout } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+            await api.post("/logout");
+        } catch (e) {
+            console.log("Token expirado ou inválido");
+        }
+        logout(); // Limpa o estado global e o localStorage
+        navigate("/login");
+    };
+
+    return (
         <div className="nav">
-            <Link to={"/"}>Home</Link>
-            <Link to={"/new"}>Adicionar novo</Link>
-            <Link to={"/list"}>Ver todos</Link>
+            <Link to="/">Home</Link>
+
+            {/* Links visíveis apenas para Logados */}
+            {authenticated && (
+                <>
+                    <Link to="/new">Adicionar novo</Link>
+                    <Link to="/list">Ver todos</Link>
+                    <button onClick={handleLogout}>Logout</button>
+                </>
+            )}
+
+            {/* Links visíveis apenas para Visitantes */}
+            {!authenticated && (
+                <>
+                    <Link to="/register">Criar conta</Link>
+                    <Link to="/login">Entrar</Link>
+                </>
+            )}
         </div>
-    )
+    );
 }
 
-export default Navbar
+export default Navbar;

@@ -2,8 +2,12 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 import "./CharactersCreate.css";
 import Navbar from './Navbar';
+import { useNavigate } from 'react-router-dom';
 
 function CharactersCreate(){
+
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         name: "",
         franchise: "",
@@ -33,9 +37,16 @@ function CharactersCreate(){
     data.append("franchise", formData.franchise);
     data.append("description", formData.description);
     data.append("image_url", formData.image_url);
+    const token = localStorage.getItem('token');
 
         try{
-            await axios.post("http://127.0.0.1:8000/api/characters", data);
+            await axios.post("http://127.0.0.1:8000/api/characters", data, {
+                headers: {
+                'Authorization': `Bearer ${token}`, 
+                'Accept': 'application/json',
+                'Content-Type': 'multipart/form-data'
+            }
+            });
             alert("Character criado com sucesso!");
             navigate("/list")
 

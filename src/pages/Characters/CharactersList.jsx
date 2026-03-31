@@ -9,6 +9,7 @@ import Navbar from './Navbar';
 function CharactersList(){
     const [characters, setCharacters] = useState([])
     const navigate = useNavigate();
+    const token = localStorage.getItem('token');
 
     useEffect(() => {
         const requestAPI = async () => {
@@ -24,9 +25,14 @@ function CharactersList(){
 
     const handleDelete = async(id) => {
         if(confirm("Tem certeza de deseja excluir o personagem?")){
-            await axios.delete(`http://127.0.0.1:8000/api/characters/${id}`)
+            await axios.delete(`http://127.0.0.1:8000/api/characters/${id}`, {
+                headers: {
+                'Authorization': `Bearer ${token}`, 
+                'Accept': 'application/json',
+                }
+            })
             alert("Personagens excluido com sucesso!")
-            navigate("/list")
+            setCharacters(prev => prev.filter(c => c.id !== id));
         }
     }
     

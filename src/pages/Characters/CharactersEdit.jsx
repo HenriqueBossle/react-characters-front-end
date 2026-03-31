@@ -6,6 +6,8 @@ import Navbar from "./Navbar";
 function CharactersEdit(){
     const { id } = useParams();
     const navigate = useNavigate();
+    const token = localStorage.getItem('token');
+
 
     const [formData, setFormData] = useState({
         name: "",
@@ -15,7 +17,9 @@ function CharactersEdit(){
     });
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/api/characters/${id}`).then(response => {
+        axios.get(`http://127.0.0.1:8000/api/characters/${id}`,{
+            headers: { 'Authorization': `Bearer ${token}` } // Adicione isso se a rota for privada
+        }).then(response => {
             setFormData(response.data.data);
         })
         .catch(error => {
@@ -46,6 +50,7 @@ function CharactersEdit(){
     data.append("franchise", formData.franchise);
     data.append("description", formData.description);
 
+
     // Só adiciona imagem se o usuário selecionou um arquivo novo
     if (formData.image_url instanceof File) {
         data.append("image_url", formData.image_url);
@@ -53,7 +58,12 @@ function CharactersEdit(){
 
     try {
         await axios.post(`http://127.0.0.1:8000/api/characters/${id}`, data, {
-            headers: { "Content-Type": "multipart/form-data" }
+            headers: { "Content-Type": "multipart/form-data", 
+                    'Authorization': `Bearer ${token}`, 
+                    'Accept': 'application/json',
+            }
+    
+            
         });
         alert("Personagem atualizado com sucesso!");
         navigate("/list");
