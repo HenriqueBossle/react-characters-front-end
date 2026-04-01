@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../Characters/Navbar';
+import './Register.css';
 
 
 function Register() {
@@ -48,6 +50,8 @@ function Register() {
     };
 
     return (
+        <>
+        <Navbar />
         <div className="container">
             <div className="card">
                 <h2>Create Account</h2>
@@ -79,6 +83,7 @@ function Register() {
                 </p>
             </div>
         </div>
+        </>
     );
 }
 

@@ -10,6 +10,7 @@ function CharactersList(){
     const [characters, setCharacters] = useState([])
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
+    
 
     useEffect(() => {
         const requestAPI = async () => {
@@ -17,7 +18,7 @@ function CharactersList(){
             const response = await api.get('/characters/');
             setCharacters(response.data.data)
         } catch(error){
-            console.error("Erro em trazer personagens:", error);
+            console.error("Erro em trazer personagens:", error.response.data);
         }
     }
         requestAPI()

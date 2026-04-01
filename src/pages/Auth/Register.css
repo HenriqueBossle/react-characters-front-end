@@ -1,0 +1,91 @@
+/* Fundo estilo Marvel */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #000000, #1a0000, #000000);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Container central */
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card */
+.card {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 35px;
+    border-radius: 12px;
+    width: 350px;
+    box-shadow: 0 0 25px red;
+    border: 1px solid red;
+    color: white;
+}
+
+/* Título */
+.card h2 {
+    text-align: center;
+    color: red;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+/* Grupo do formulário */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+/* Labels */
+.form-group label {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* Inputs */
+.form-group input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid red;
+    background: #111;
+    color: white;
+    outline: none;
+}
+
+/* Efeito focus */
+.form-group input:focus {
+    box-shadow: 0 0 10px red;
+}
+
+/* Botão */
+button {
+    width: 100%;
+    padding: 10px;
+    background: red;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Hover botão */
+button:hover {
+    background: darkred;
+    box-shadow: 0 0 10px red;
+}
+
+/* Link login */
+.card span {
+    color: red;
+    cursor: pointer;
+}
+
+.card span:hover {
+    text-decoration: underline;
+}

@@ -21,12 +21,13 @@ function Navbar() {
     return (
         <div className="nav">
             <Link to="/">Home</Link>
+            <Link to="/list">Ver todos</Link>
 
             {/* Links visíveis apenas para Logados */}
             {authenticated && (
                 <>
                     <Link to="/new">Adicionar novo</Link>
-                    <Link to="/list">Ver todos</Link>
+                    
                     <button onClick={handleLogout}>Logout</button>
                 </>
             )}
