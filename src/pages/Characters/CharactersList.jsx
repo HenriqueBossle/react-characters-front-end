@@ -24,50 +24,32 @@ function CharactersList(){
         requestAPI()
     },[])
 
-    const handleDelete = async(id) => {
-        if(confirm("Tem certeza de deseja excluir o personagem?")){
-            await axios.delete(`http://127.0.0.1:8000/api/characters/${id}`, {
-                headers: {
-                'Authorization': `Bearer ${token}`, 
-                'Accept': 'application/json',
-                }
-            })
-            alert("Personagens excluido com sucesso!")
-            setCharacters(prev => prev.filter(c => c.id !== id));
-        }
-    }
     
 
     return(
          <>
         
         <Navbar />
-        <div className="container">
-                        
-
-
+        <div className="container">            
             <ul>
-    {characters.map(character => {
-        const imageUrl = character.image_url?.startsWith('http')
-            ? character.image_url
-            : `https://res.cloudinary.com/dd7vsxg0m/image/upload/${character.image_url.trim()}`;
+            {characters.map(character => {
+                const imageUrl = character.image_url?.startsWith('http')
+                    ? character.image_url
+                    : `https://res.cloudinary.com/dd7vsxg0m/image/upload/${character.image_url.trim()}`;
 
-        return (
-            
-            <li key={character.id}>
-                <img src={imageUrl} alt={character.name} width="400"/>
-                <strong>{character.name}</strong>
-                <p>{character.franchise}</p>
-                <p>{character.description}</p>
+                return (
+                    
+                    <li key={character.id}>
+                        <img src={imageUrl} alt={character.name} width="400"/>
+                        <strong>{character.name}</strong>
+                        <p>{character.franchise}</p>
+                        <p>{character.description}</p>
 
-                <Link to={`/edit/${character.id}`}>Editar</Link>
-                <button onClick={() => handleDelete(character.id)}>
-                    Excluir
-                </button>
-            </li>
-            )
-        })}
-    </ul>
+                        <Link to={`/${character.id}`}>Ver mais</Link>
+                    </li>
+                    )
+                })}
+            </ul>
         </div>
        </>)
 }

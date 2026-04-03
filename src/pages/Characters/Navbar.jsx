@@ -20,25 +20,26 @@ function Navbar() {
 
     return (
         <div className="nav">
-            <Link to="/">Home</Link>
-            <Link to="/list">Ver todos</Link>
+    <div className="nav-left">
+        <Link to="/">Home</Link>
+        <Link to="/list">Ver todos</Link>
+    </div>
 
-            {/* Links visíveis apenas para Logados */}
-            {authenticated && (
-                <>
-                    <Link to="/new">Adicionar novo</Link>
-                    
-                    <button onClick={handleLogout}>Logout</button>
-                </>
-            )}
+    <div className="nav-right">
+        {authenticated && (
+            <>
+                <Link to="/new">Adicionar novo</Link>
+                <button onClick={handleLogout}>Logout</button>
+            </>
+        )}
 
-            {/* Links visíveis apenas para Visitantes */}
-            {!authenticated && (
-                <>
-                    <Link to="/register">Criar conta</Link>
-                    <Link to="/login">Entrar</Link>
-                </>
-            )}
+        {!authenticated && (
+            <>
+                <Link className="btn-login" to="/login">Entrar</Link>
+                <Link className="btn-register" to="/register">Criar conta</Link>
+            </>
+        )}
+            </div>
         </div>
     );
 }

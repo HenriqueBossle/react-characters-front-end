@@ -7,6 +7,7 @@ import Login from '../pages/Auth/Login';
 import Register from '../pages/Auth/Register';
 import { AuthProvider } from '../context/AuthContext';
 import ProtectedRoutes from './ProtectedRoutes';
+import CharactersShow from '../pages/Characters/CharactersShow';
 
 export function AppRoutes() {
   return (
@@ -17,6 +18,7 @@ export function AppRoutes() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/list" element={<CharactersList/>}/>
+        <Route path="/:id" element={<CharactersShow />}/>
         <Route element={<ProtectedRoutes />}>
             <Route path="/new" element={<CharactersCreate/>} />
             <Route path="/edit/:id" element={<CharactersEdit />}/>
