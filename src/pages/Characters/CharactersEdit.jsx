@@ -18,8 +18,9 @@ function CharactersEdit(){
 
     useEffect(() => {
         axios.get(`http://127.0.0.1:8000/api/characters/${id}`,{
-            headers: { 'Authorization': `Bearer ${token}` } // Adicione isso se a rota for privada
+            headers: { 'Authorization': `Bearer ${token}` } 
         }).then(response => {
+            console.log(response.data);
             setFormData(response.data.data);
         })
         .catch(error => {
@@ -68,7 +69,9 @@ function CharactersEdit(){
         alert("Personagem atualizado com sucesso!");
         navigate("/list");
     } catch (error) {
-        console.error("Erro ao atualizar personagem:", error);
+        console.error("Erro ao atualizar personagem:", error.response?.data);
+        alert(JSON.stringify(error.response?.data));
+
     }
 };
     

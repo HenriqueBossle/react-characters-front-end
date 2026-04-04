@@ -69,7 +69,7 @@ function CharactersShow() {
                         </div>
                         {authenticated && (
                             <>
-                                <Link to="/edit/:id" className="btn-edit">
+                                <Link to={`/edit/${character.id}`} className="btn-edit">
                                     Editar
                                 </Link>
                                 <button className="btn-delete" onClick={() => handleDelete(character.id)}>
