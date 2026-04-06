@@ -8,6 +8,8 @@ import Navbar from './Navbar';
 
 function CharactersList(){
     const [characters, setCharacters] = useState([])
+    const [loading, setLoading] = useState(true);
+
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
     
@@ -19,12 +21,15 @@ function CharactersList(){
             setCharacters(response.data.data)
         } catch(error){
             console.error("Erro em trazer personagens:", error.response.data);
+        }finally {
+            setLoading(false);
         }
     }
         requestAPI()
     },[])
 
-    
+    if (loading) return <><Navbar /><p>Loading...</p></>;
+
 
     return(
          <>

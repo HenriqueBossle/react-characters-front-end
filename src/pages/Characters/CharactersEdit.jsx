@@ -7,6 +7,9 @@ function CharactersEdit(){
     const { id } = useParams();
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
+    const [loading, setLoading] = useState(true);
+    const [saving, setSaving] = useState(false);
+
 
 
     const [formData, setFormData] = useState({
@@ -25,7 +28,10 @@ function CharactersEdit(){
         })
         .catch(error => {
             console.error("Erro ao carregar personagem:", error);
+        }).finally(() => {
+            setLoading(false);
         })
+
     }, [id])
 
     const handleChange = (e) => {
@@ -44,6 +50,8 @@ function CharactersEdit(){
 
     const handleSubmit = async (e) => {
     e.preventDefault();
+    setSaving(true);
+
 
     const data = new FormData();
     data.append("_method", "PUT"); // method spoofing para o Laravel
@@ -71,9 +79,21 @@ function CharactersEdit(){
     } catch (error) {
         console.error("Erro ao atualizar personagem:", error.response?.data);
         alert(JSON.stringify(error.response?.data));
-
+    } finally {
+        setSaving(false)
     }
 };
+
+if (loading) {
+    return (
+        <>
+            <Navbar />
+            <div className="container">
+                <h2>Carregando dados do personagem...</h2>
+            </div>
+        </>
+    );
+}
     
     return(
         <>
@@ -81,11 +101,11 @@ function CharactersEdit(){
         <Navbar />
     <div className="container">
         <div className="card">
-            <h1>EDIT CHARACTER</h1>
+            <h2>Editar Personagem</h2>
 
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label>Name:</label>
+                    <label>Nome:</label>
                     <input
                         type="text"
                         name="name"
@@ -95,7 +115,7 @@ function CharactersEdit(){
                 </div>
 
                 <div className="form-group">
-                    <label>Franchise:</label>
+                    <label>Franquia:</label>
                     <input
                         type="text"
                         name="franchise"
@@ -105,7 +125,7 @@ function CharactersEdit(){
                 </div>
 
                 <div className="form-group">
-                    <label>Description:</label>
+                    <label>Descrição:</label>
                     <textarea
                         name="description"
                         value={formData.description}
@@ -114,7 +134,7 @@ function CharactersEdit(){
                 </div>
 
                 <div className="form-group">
-                    <label>Image:</label>
+                    <label>Imagem:</label>
                     <input
                         type="file"
                         name="image_url"
@@ -122,7 +142,7 @@ function CharactersEdit(){
                     />
                 </div>
 
-                <button type="submit">Atualizar</button>
+                <button type="submit" disabled={saving}> {saving ? "Salvando..." : "Atualizar"}</button>
             </form>
         </div>
     </div>

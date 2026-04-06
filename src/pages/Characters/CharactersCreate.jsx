@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 function CharactersCreate(){
 
     const navigate = useNavigate();
+    const [saving, setSaving] = useState(false);
+
 
     const [formData, setFormData] = useState({
         name: "",
@@ -52,6 +54,8 @@ function CharactersCreate(){
 
         }catch (error) {
             console.error("Erro ao criar personagens:", error);
+        } finally {
+            setSaving(false)
         }
     
     }
@@ -60,12 +64,12 @@ function CharactersCreate(){
         <Navbar/>
         <div className="container">
         <div className="card">
-            <h2>Create Character</h2>
+            <h2>Adicionar Personagem</h2>
 
             <form onSubmit={handleSubmit}>
 
                 <div className="form-group">
-                    <label>Name:</label>
+                    <label>Nome:</label>
                     <input
                         type="text"
                         name="name"
@@ -75,7 +79,7 @@ function CharactersCreate(){
                 </div>
 
                 <div className="form-group">
-                    <label>Franchise:</label>
+                    <label>Franquia:</label>
                     <input
                         type="text"
                         name="franchise"
@@ -85,7 +89,7 @@ function CharactersCreate(){
                 </div>
 
                 <div className="form-group">
-                    <label>Description:</label>
+                    <label>Descrição:</label>
                     <textarea
                         name="description"
                         value={formData.description}
@@ -94,7 +98,7 @@ function CharactersCreate(){
                 </div>
 
                 <div className="form-group">
-                    <label>Image:</label>
+                    <label>Imagem:</label>
                     <input
                         type="file"
                         name="image_url"
@@ -102,7 +106,7 @@ function CharactersCreate(){
                     />
                 </div>
 
-                <button type="submit">Create</button>
+            <button type="submit" disabled={saving}>{saving ? "Adicionando o personagem" : "Adicionar"}</button>
             </form>
         </div>
     </div>
