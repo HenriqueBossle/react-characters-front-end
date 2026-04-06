@@ -6,7 +6,7 @@ function App() {
     <div className="hero">
         <div className="overlay">
             <h1>CHARACTERS DATABASE</h1>
-            <p>Adicione e Explore personagens de diversas histórias e universos.</p>
+            <p>Explore personagens de diversas histórias e universos.</p>
             <Link className='button' to={"/list"}>VER PERSONAGENS</Link>
         </div>
     </div>
