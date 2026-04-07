@@ -28,7 +28,7 @@ function CharactersList(){
         requestAPI()
     },[])
 
-    if (loading) return <><Navbar /><p>Loading...</p></>;
+    if (loading) return <><Navbar /><h2 id="loading">Carregando os personagens...</h2></>;
 
 
     return(

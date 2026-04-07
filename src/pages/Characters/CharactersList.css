@@ -113,6 +113,11 @@
     background: #ED1D24;
 }
 
+#loading{
+    color: red;
+    padding: 20px;
+}
+
 
 /* Responsivo */
 @media (max-width: 1000px) {

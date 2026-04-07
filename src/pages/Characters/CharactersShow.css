@@ -136,6 +136,11 @@
     transform: scale(1.05);
 }
 
+#loading{
+    color: red;
+    padding: 20px;
+}
+
 /* Responsivo */
 @media (max-width: 900px) {
     .character-card-show {

@@ -88,9 +88,8 @@ if (loading) {
     return (
         <>
             <Navbar />
-            <div className="container">
-                <h2>Carregando dados do personagem...</h2>
-            </div>
+                <h2 id="loading">Carregando formulário de edição...</h2>
+            
         </>
     );
 }

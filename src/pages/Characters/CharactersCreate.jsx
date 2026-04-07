@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import { useNavigate } from 'react-router-dom';
 
 function CharactersCreate(){
+    
 
     const navigate = useNavigate();
     const [saving, setSaving] = useState(false);
@@ -33,7 +34,7 @@ function CharactersCreate(){
 
     const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setSaving(true);
     const data = new FormData();
     data.append("name", formData.name);
     data.append("franchise", formData.franchise);

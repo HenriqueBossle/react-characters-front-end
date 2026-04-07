@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import api from "../../api/api";
 import Navbar from "./Navbar";
 import './CharactersShow.css';
@@ -9,7 +9,10 @@ function CharactersShow() {
     const { id } = useParams();
     const [character, setCharacter] = useState(null);
     const [loading, setLoading] = useState(true);
+    const token = localStorage.getItem('token');
     const { authenticated, logout } = useContext(AuthContext);
+    const [saving, setSaving] = useState(false);
+    const navigate = useNavigate()
     
 
     useEffect(() => {
@@ -26,7 +29,7 @@ function CharactersShow() {
         requestAPI();
     }, [id]);
 
-    if (loading) return <><Navbar /><p>Loading...</p></>;
+    if (loading) return <><Navbar /><h2 id="loading">Carregando os dados do personagem...</h2></>;
     if (!character) return <><Navbar /><p>Character not found!</p></>;
 
     const imageUrl = character.image_url?.startsWith('http')
@@ -34,15 +37,23 @@ function CharactersShow() {
         : `https://res.cloudinary.com/dd7vsxg0m/image/upload/${character.image_url?.trim()}`;
 
         const handleDelete = async(id) => {
+        setSaving(true)
         if(confirm("Tem certeza de deseja excluir o personagem?")){
-            await axios.delete(`http://127.0.0.1:8000/api/characters/${id}`, {
+            try{
+                await api.delete(`http://127.0.0.1:8000/api/characters/${id}`, {
                 headers: {
                 'Authorization': `Bearer ${token}`, 
                 'Accept': 'application/json',
                 }
             })
             alert("Personagens excluido com sucesso!")
-            setCharacters(prev => prev.filter(c => c.id !== id));
+            navigate("/list")
+            } catch (error) {
+                console.error("Erro ao deletar personagens:", error);
+            } finally {
+                setSaving(false)
+            }
+            
         }
     }
 
@@ -72,8 +83,8 @@ function CharactersShow() {
                                 <Link to={`/edit/${character.id}`} className="btn-edit">
                                     Editar
                                 </Link>
-                                <button className="btn-delete" onClick={() => handleDelete(character.id)}>
-                                    Excluir
+                                <button className="btn-delete" onClick={() => handleDelete(character.id)} disabled={saving}>
+                                    {saving ? "Excluindo" : "Excluir"}
                                 </button>
                             </>
                         )}
