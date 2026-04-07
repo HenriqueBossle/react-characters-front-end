@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import api from "../../api/api";
 import "./Navbar.css";
@@ -7,6 +7,7 @@ import "./Navbar.css";
 function Navbar() {
     const { authenticated, logout } = useContext(AuthContext);
     const navigate = useNavigate();
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const handleLogout = async () => {
         try {
@@ -14,31 +15,45 @@ function Navbar() {
         } catch (e) {
             console.log("Token expirado ou inválido");
         }
-        logout(); // Limpa o estado global e o localStorage
+        logout();
         navigate("/login");
     };
 
     return (
         <div className="nav">
-    <div className="nav-left">
-        <Link to="/">Home</Link>
-        <Link to="/list">Ver todos</Link>
-    </div>
 
-    <div className="nav-right">
-        {authenticated && (
-            <>
-                <Link to="/new">Adicionar novo</Link>
-                <button onClick={handleLogout}>Logout</button>
-            </>
-        )}
-
-        {!authenticated && (
-            <>
-                <Link className="btn-login" to="/login">Entrar</Link>
-            </>
-        )}
+            {/* BOTÃO HAMBURGUER */}
+            <div 
+                className={`hamburger ${menuOpen ? "active" : ""}`} 
+                onClick={() => setMenuOpen(!menuOpen)}
+            >
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
+
+            {/* ESQUERDA */}
+            <div className={`nav-left ${menuOpen ? "open" : ""}`}>
+                <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
+                <Link to="/list" onClick={() => setMenuOpen(false)}>Ver todos</Link>
+            </div>
+
+            {/* DIREITA */}
+            <div className={`nav-right ${menuOpen ? "open" : ""}`}>
+                {authenticated && (
+                    <>
+                        <Link to="/new" onClick={() => setMenuOpen(false)}>Adicionar novo</Link>
+                        <button onClick={handleLogout}>Logout</button>
+                    </>
+                )}
+
+                {!authenticated && (
+                    <Link className="btn-login" to="/login" onClick={() => setMenuOpen(false)}>
+                        Entrar
+                    </Link>
+                )}
+            </div>
+
         </div>
     );
 }

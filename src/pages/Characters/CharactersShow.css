@@ -1,147 +1,146 @@
-/* Fundo geral */
+/* === BASE === */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
 .main-bg {
     min-height: 100vh;
     background: #0b0b0b;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Lato', Arial, sans-serif;
     color: white;
 }
 
-/* Centralizar conteúdo */
 .show-wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 40px;
+    align-items: flex-start;
+    padding: 40px 20px;
 }
 
-/* Card principal */
+/* ========================= */
+/* 🎴 CARD PRINCIPAL */
+/* ========================= */
 .character-card-show {
     display: flex;
     background: #1a1a1a;
-    border: 3px solid #ED1D24;
+    border: 2px solid #ED1D24;
     border-radius: 12px;
-    box-shadow: 0 0 25px rgba(237,29,36,0.6);
+    box-shadow: 0 0 30px rgba(237, 29, 36, .45);
     overflow: hidden;
-    max-width: 1000px;
     width: 100%;
+    max-width: 1000px;
+    transition: box-shadow .3s, transform .3s;
 }
 
-/* Lado da imagem */
+/* Hover só desktop */
+@media (hover: hover) {
+    .character-card-show:hover {
+        box-shadow: 0 0 50px rgba(237, 29, 36, .75);
+        transform: scale(1.005);
+    }
+}
+
+/* ========================= */
+/* 🖼️ IMAGEM */
+/* ========================= */
 .image-section {
-    width: 45%;
-    background: black;
+    width: 42%;
+    flex-shrink: 0;
+    background: #000;
+    min-height: 340px;
+    overflow: hidden;
 }
 
 .image-section img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top center;
+    display: block;
 }
 
-/* Lado das informações */
+/* ========================= */
+/* 📝 INFO */
+/* ========================= */
 .info-section {
-    width: 55%;
-    padding: 30px;
+    flex: 1;
+    padding: 28px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 14px;
 }
 
-/* Nome personagem */
 .info-section h1 {
+    font-size: clamp(26px, 4vw, 40px);
     color: #ED1D24;
-    font-size: 36px;
-    margin-bottom: 10px;
-    font-family: Impact, Arial Black, sans-serif;
     letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-/* Franquia */
-.info-section h3 {
-    color: #ccc;
-    margin-bottom: 20px;
-}
-
-/* Caixa descrição */
+/* ========================= */
+/* 📄 DESCRIÇÃO */
+/* ========================= */
 .description-box {
     background: #111;
-    border-left: 4px solid #ED1D24;
-    padding: 15px;
-    margin-top: 10px;
+    border-left: 3px solid #ED1D24;
+    border-radius: 0 6px 6px 0;
+    padding: 14px 16px;
+    line-height: 1.5;
 }
 
-.description-box strong {
-    color: #ED1D24;
-}
-
-.link{
-    background-color: red;
-    margin-bottom: 20px;
-    display: inline-block;}
-
-/* Botão voltar */
-.info-section a {
-    margin-bottom: 20px;
-    display: inline-block;
-}
-
-/* Hover estilo Marvel */
-.character-card-show:hover {
-    box-shadow: 0 0 40px rgba(237,29,36,1);
-    transform: scale(1.01);
-    transition: 0.3s;
-}
-
-/* Botões */
+/* ========================= */
+/* 🔘 BOTÕES */
+/* ========================= */
 .buttons {
-    margin-top: 20px;
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
-/* Botão Editar */
+/* ✏️ EDIT (PRETO → VERMELHO) */
 .btn-edit {
-    background-color: #ED1D24;
-    color: white;
-    padding: 10px 18px;
-    text-decoration: none;
-    margin-top: 15px;
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+    padding: 12px;
     border-radius: 6px;
     font-weight: bold;
-    transition: 0.3s;
+    cursor: pointer;
+    transition: .3s;
+
+    background-color: #0b0b0b;
+    color: #ED1D24;
     border: 2px solid #ED1D24;
 }
 
 .btn-edit:hover {
-    background-color: #a31217;
-    border-color: #a31217;
-    transform: scale(1.05);
+    background-color: #ED1D24;
+    color: white;
 }
 
-/* Botão Excluir */
+/* 🗑️ DELETE (VERMELHO → ESCURO) */
 .btn-delete {
-    background-color: black;
-    color: white;
-    padding: 10px 18px;
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+    padding: 12px;
     border-radius: 6px;
     font-weight: bold;
-    border: 2px solid black;
     cursor: pointer;
-    transition: 0.3s;
+    transition: .3s;
+
+    background-color: #ED1D24;
+    color: white;
+    border: 2px solid #ED1D24;
 }
 
 .btn-delete:hover {
-    background-color: #ED1D24;
-    border-color: #ED1D24;
-    transform: scale(1.05);
+    background-color: #a31217;
+    border-color: #a31217;
 }
 
-#loading{
-    color: red;
-    padding: 20px;
-}
-
-/* Responsivo */
+/* ========================= */
+/* 📱 TABLET <= 900px */
+/* ========================= */
 @media (max-width: 900px) {
     .character-card-show {
         flex-direction: column;
@@ -149,10 +148,71 @@
 
     .image-section {
         width: 100%;
-        height: 300px;
+        height: 280px;
     }
 
     .info-section {
+        padding: 20px;
+    }
+}
+
+/* ========================= */
+/* 📱 MOBILE <= 600px */
+/* ========================= */
+@media (max-width: 600px) {
+    .show-wrapper {
+        padding: 10px;
+    }
+
+    .image-section {
+        height: 220px;
+    }
+
+    .info-section {
+        padding: 16px;
+        gap: 10px;
+    }
+
+    .info-section h1 {
+        font-size: clamp(20px, 6vw, 26px);
+        letter-spacing: 1px;
+    }
+
+    .description-box {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .btn-edit,
+    .btn-delete {
         width: 100%;
+        font-size: 13px;
+    }
+}
+
+/* ========================= */
+/* 📱 MUITO PEQUENO <= 360px */
+/* ========================= */
+@media (max-width: 360px) {
+    .image-section {
+        height: 180px;
+    }
+
+    .info-section h1 {
+        font-size: 18px;
+    }
+
+    .description-box {
+        font-size: 11px;
+    }
+
+    .btn-edit, 
+    .btn-delete {
+        font-size: 11px;
+        padding: 9px;
     }
 }

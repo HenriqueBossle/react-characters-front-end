@@ -1,7 +1,7 @@
 /* Hero com imagem de fundo */
 .hero {
     height: 100vh;
-    background-image: url("https://res.cloudinary.com/dd7vsxg0m/image/upload/v1774617912/htdfvtnjpmxcikvg37od.jpg"); /* coloque sua imagem aqui */
+    background-image: url("https://res.cloudinary.com/dd7vsxg0m/image/upload/v1774617912/htdfvtnjpmxcikvg37od.jpg");
     background-size: cover;
     background-position: center;
     position: relative;
@@ -27,6 +27,7 @@
     font-size: 80px;
     font-family: Impact, Arial Black, sans-serif;
     margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
 /* Texto */
@@ -34,6 +35,7 @@
     color: white;
     font-size: 20px;
     margin-bottom: 20px;
+    max-width: 600px; /* Evita que o texto fique longo demais em telas largas */
 }
 
 /* Botão estilo Marvel */
@@ -47,10 +49,60 @@
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 }
 
-/* Hover botão */
 .overlay .button:hover {
     background: #b31318;
     transform: scale(1.05);
+}
+
+/* =============================================
+   RESPONSIVIDADE (MEDIA QUERIES)
+   ============================================= */
+
+/* Tablets (até 992px) */
+@media (max-width: 992px) {
+    .overlay {
+        padding-left: 40px;
+    }
+    .overlay h1 {
+        font-size: 60px;
+    }
+}
+
+/* Celulares Grandes e Tablets em pé (até 768px) */
+@media (max-width: 768px) {
+    .overlay {
+        padding: 0 20px;
+        align-items: center; /* Centraliza o conteúdo no mobile */
+        text-align: center;
+        background: rgba(0, 0, 0, 0.6); /* Overlay uniforme para melhor leitura */
+    }
+
+    .overlay h1 {
+        font-size: 45px;
+    }
+
+    .overlay p {
+        font-size: 18px;
+    }
+}
+
+/* Celulares Pequenos (até 480px) */
+@media (max-width: 480px) {
+    .hero {
+        height: 100vh; /* Reduz um pouco a altura em telas muito baixas */
+    }
+
+    .overlay h1 {
+        font-size: 35px;
+    }
+
+    .overlay .button {
+        width: 100%; /* Botão ocupa a largura total disponível */
+        max-width: 280px;
+    }
 }
