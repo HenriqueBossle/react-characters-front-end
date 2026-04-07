@@ -36,7 +36,6 @@ function Navbar() {
         {!authenticated && (
             <>
                 <Link className="btn-login" to="/login">Entrar</Link>
-                <Link className="btn-register" to="/register">Criar conta</Link>
             </>
         )}
             </div>

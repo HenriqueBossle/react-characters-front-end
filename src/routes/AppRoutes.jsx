@@ -15,13 +15,14 @@ export function AppRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App/>} />
-        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/list" element={<CharactersList/>}/>
         <Route path="/:id" element={<CharactersShow />}/>
         <Route element={<ProtectedRoutes />}>
             <Route path="/new" element={<CharactersCreate/>} />
             <Route path="/edit/:id" element={<CharactersEdit />}/>
+            <Route path="/register" element={<Register />} />
+
         </Route>
 
       </Routes>
