@@ -16,7 +16,7 @@ function Login() {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await api.post('http://127.0.0.1:8000/api/login', {
+            const response = await api.post('https://characters-api-laravel.onrender.com/api/login', {
                 email,
                 password,
                 device_name: 'react_app'

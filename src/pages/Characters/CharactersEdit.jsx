@@ -20,7 +20,7 @@ function CharactersEdit(){
     });
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/api/characters/${id}`,{
+        axios.get(`https://characters-api-laravel.onrender.com/api/characters/${id}`,{
             headers: { 'Authorization': `Bearer ${token}` } 
         }).then(response => {
             console.log(response.data);
@@ -66,7 +66,7 @@ function CharactersEdit(){
     }
 
     try {
-        await axios.post(`http://127.0.0.1:8000/api/characters/${id}`, data, {
+        await axios.post(`https://characters-api-laravel.onrender.com/api/characters/${id}`, data, {
             headers: { "Content-Type": "multipart/form-data", 
                     'Authorization': `Bearer ${token}`, 
                     'Accept': 'application/json',

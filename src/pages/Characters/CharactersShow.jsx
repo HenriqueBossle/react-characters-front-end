@@ -40,7 +40,7 @@ function CharactersShow() {
         setSaving(true)
         if(confirm("Tem certeza de deseja excluir o personagem?")){
             try{
-                await api.delete(`http://127.0.0.1:8000/api/characters/${id}`, {
+                await api.delete(`https://characters-api-laravel.onrender.com/api/characters/${id}`, {
                 headers: {
                 'Authorization': `Bearer ${token}`, 
                 'Accept': 'application/json',

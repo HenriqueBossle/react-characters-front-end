@@ -32,7 +32,7 @@ function Register() {
         }
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/register', formData);
+            const response = await axios.post('https://characters-api-laravel.onrender.com/api/register', formData);
             
             // Opcional: Já logar o usuário automaticamente após o registro
             // localStorage.setItem('token', response.data.token);

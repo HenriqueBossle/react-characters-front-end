@@ -43,7 +43,7 @@ function CharactersCreate(){
     const token = localStorage.getItem('token');
 
         try{
-            await axios.post("http://127.0.0.1:8000/api/characters", data, {
+            await axios.post("https://characters-api-laravel.onrender.com/api/characters", data, {
                 headers: {
                 'Authorization': `Bearer ${token}`, 
                 'Accept': 'application/json',
