@@ -9,7 +9,7 @@ import { AuthProvider } from '../context/AuthContext';
 import ProtectedRoutes from './ProtectedRoutes';
 import CharactersShow from '../pages/Characters/CharactersShow';
 
-export function AppRoutes() {
+function AppRoutes() {
   return (
     <AuthProvider>
     <BrowserRouter>
@@ -22,11 +22,11 @@ export function AppRoutes() {
             <Route path="/new" element={<CharactersCreate/>} />
             <Route path="/edit/:id" element={<CharactersEdit />}/>
             <Route path="/register" element={<Register />} />
-
         </Route>
-
       </Routes>
     </BrowserRouter>
     </AuthProvider>
   );
-}
+};
+
+export default AppRoutes;
