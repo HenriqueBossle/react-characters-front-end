@@ -13,7 +13,7 @@ CSS/Styled Components (estilização)
 Cloudinary (exibição de imagens)
 
 💻 Sobre o Projeto
-A interface foi desenvolvida para oferecer uma experiência fluida de usuário (UX), conectando-se diretamente a uma API Laravel.
+A interface desenvolvida conecta-se diretamente a uma API Laravel.
 
 Funcionalidades principais:
 
@@ -23,7 +23,6 @@ CRUD Completo: Listagem, criação, edição e exclusão de personagens.
 
 Integração de Imagens: Exibição dinâmica de arquivos armazenados no Cloudinary.
 
-Escalabilidade: Estrutura de pastas organizada por componentes e serviços.
 
 # React + Vite
 
