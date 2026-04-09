@@ -1,3 +1,30 @@
+🚀 Projeto Characters - Frontend (React)
+Este é o repositório do frontend da aplicação de gerenciamento de personagens. O objetivo principal deste projeto foi aprofundar conhecimentos em consumo de APIs REST, hooks do React e integração com serviços de nuvem.
+
+🛠️ Tecnologias Utilizadas
+React (Vite/CRA)
+
+Axios (para consumo da API)
+
+React Router Dom (navegação)
+
+CSS/Styled Components (estilização)
+
+Cloudinary (exibição de imagens)
+
+💻 Sobre o Projeto
+A interface foi desenvolvida para oferecer uma experiência fluida de usuário (UX), conectando-se diretamente a uma API Laravel.
+
+Funcionalidades principais:
+
+Autenticação: Login e proteção de rotas.
+
+CRUD Completo: Listagem, criação, edição e exclusão de personagens.
+
+Integração de Imagens: Exibição dinâmica de arquivos armazenados no Cloudinary.
+
+Escalabilidade: Estrutura de pastas organizada por componentes e serviços.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
