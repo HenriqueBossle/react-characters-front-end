@@ -2,7 +2,7 @@
 Este é o repositório do frontend da aplicação de gerenciamento de personagens. O objetivo principal deste projeto foi aprofundar conhecimentos em consumo de APIs REST, hooks do React e integração com serviços de nuvem.
 
 🛠️ Tecnologias Utilizadas
-React (Vite/CRA)
+React
 
 Axios (para consumo da API)
 
