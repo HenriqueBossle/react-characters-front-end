@@ -23,7 +23,7 @@ CRUD Completo: Listagem, criação, edição e exclusão de personagens.
 
 Integração de Imagens: Exibição dinâmica de arquivos armazenados no Cloudinary.
 
-Veja o repositório da API Laravel: 
+Veja o repositório da API Laravel: https://github.com/HenriqueBossle/characters-api-laravel
 
 
 # React + Vite
